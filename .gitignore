@@ -1,0 +1,81 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build output
+dist/
+build/
+out/
+coverage/
+**/dist/
+**/build/
+**/out/
+**/coverage/
+
+# Runtime and logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Local env and secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Common secret/key/cert file types
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.asc
+*.gpg
+*.kdbx
+
+# Temporary files and caches
+.cache/
+.parcel-cache/
+.vite/
+.turbo/
+.eslintcache
+*.tsbuildinfo
+tmp/
+temp/
+*.tmp
+*.swp
+*.swo
+*~
+
+# Testing/tool artifacts
+.nyc_output/
+junit.xml
+playwright-report/
+test-results/
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor/IDE
+.idea/
+.vscode/
+*.code-workspace
+
+# Optional local databases and dumps
+*.sqlite
+*.sqlite3
+*.db
+*.bak
+*.dump
+
+# Ignore root-level local helper notes
+h.md
