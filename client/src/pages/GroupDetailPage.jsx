@@ -288,7 +288,7 @@ export const GroupDetailPage = () => {
         ) : (
           <div className="mt-6 space-y-3">
             {group.activities.map((activity) => (
-              <div key={activity._id} className="rounded-[22px] border border-slate-100 bg-slate-50/70 p-4">
+              <div key={activity._id} className="rounded-[22px] border border-slate-200 bg-slate-100/85 p-4">
                 <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                   <div>
                     <div className="font-semibold text-ink">{activity.message}</div>

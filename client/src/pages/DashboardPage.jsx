@@ -174,7 +174,7 @@ export const DashboardPage = () => {
                 <Link
                   key={activity._id}
                   to={`/groups/${activity.groupId}`}
-                  className="block rounded-[22px] border border-slate-100 bg-slate-50/70 p-4 transition hover:bg-white"
+                  className="block rounded-[22px] border border-slate-200 bg-slate-100/85 p-4 transition hover:bg-white"
                 >
                   <div className="font-semibold text-ink">{activity.message}</div>
                   <div className="mt-1 text-sm text-slate-500">{activity.groupName}</div>

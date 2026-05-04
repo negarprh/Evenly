@@ -4,9 +4,9 @@ export default {
     extend: {
       colors: {
         ink: "#1f2933",
-        paper: "#faf7f2",
+        paper: "#f1ece3",
         panel: "#ffffff",
-        sand: "#f4efe7",
+        sand: "#ece4d8",
         line: "#e5e7eb",
         mint: "#0f766e",
         teal: {
