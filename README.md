@@ -1,4 +1,3 @@
-````md
 # Evenly
 
 Evenly is a real-time shared expense settlement app for groups. It helps users create groups, add shared expenses, split costs fairly, track balances, and settle debts while preserving expense history.
