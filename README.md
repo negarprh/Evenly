@@ -125,7 +125,6 @@ The main goal of the project is to make shared expenses easier to track and redu
 
 ## Project Structure
 
-```text
 server/
   src/
     config/
@@ -172,8 +171,7 @@ client/
 
     pages/
       Main application pages
-```
-````
+
 
 ## How It Works
 
