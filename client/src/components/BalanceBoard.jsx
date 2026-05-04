@@ -16,9 +16,6 @@ export const BalanceBoard = ({ balances, totalSpent = 0 }) => {
           <div>
             <div className="text-sm font-semibold text-slate-500">Who owes what</div>
             <h2 className="mt-2 display-font text-3xl font-semibold text-ink">Shared balances at a glance</h2>
-            <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
-              Keep the conversation simple. Open balances stay visible here until someone marks an expense as settled.
-            </p>
           </div>
           <div className="grid gap-2 sm:grid-cols-3 xl:max-w-[440px]">
             <MetricTile icon={Receipt} label="Total spending" value={money(totalSpent)} tone="slate" />
@@ -63,7 +60,6 @@ export const BalanceBoard = ({ balances, totalSpent = 0 }) => {
         <div className="flex items-center justify-between gap-3">
           <div>
             <h3 className="section-title">Member snapshot</h3>
-            <p className="section-copy">See who paid more, who still owes, and who’s balanced.</p>
           </div>
         </div>
 

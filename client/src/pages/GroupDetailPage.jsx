@@ -190,9 +190,7 @@ export const GroupDetailPage = () => {
           <div>
             <div className="text-sm font-semibold uppercase tracking-[0.16em] text-amber-700">Group detail</div>
             <h1 className="mt-2 display-font text-4xl font-semibold text-ink">{group.name}</h1>
-            <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-500">
-              {group.description || "Track what happened in this group, who paid, and how the balance should settle out."}
-            </p>
+            {group.description ? <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-500">{group.description}</p> : null}
             <div className="mt-5 flex flex-wrap items-center gap-4 text-sm text-slate-500">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-2">
                 <UsersRound size={16} />
@@ -218,7 +216,6 @@ export const GroupDetailPage = () => {
           <div className="flex items-start justify-between gap-4">
             <div>
               <h2 className="section-title">People in this group</h2>
-              <p className="section-copy">Everyone involved in this shared space.</p>
             </div>
             <span className="rounded-full bg-slate-100 px-3 py-1.5 text-sm font-semibold text-slate-600">
               {group.members.length} total
@@ -243,7 +240,6 @@ export const GroupDetailPage = () => {
             </span>
             <div>
               <h2 className="section-title">Add someone by email</h2>
-              <p className="section-copy">Invite an existing Evenly user into this shared group.</p>
             </div>
           </div>
 
@@ -258,7 +254,6 @@ export const GroupDetailPage = () => {
               }}
               placeholder="priya@evenly.dev"
             />
-            <p className="helper">Try the seeded demo accounts like `ali@evenly.dev`, `priya@evenly.dev`, or `sarah@evenly.dev`.</p>
             {memberError ? <p className="helper text-danger-700">{memberError}</p> : null}
           </div>
 
@@ -285,7 +280,6 @@ export const GroupDetailPage = () => {
 
       <Card className="p-6">
         <h2 className="section-title">Activity feed</h2>
-        <p className="section-copy">Human-readable updates so the group always feels current.</p>
 
         {(group.activities || []).length === 0 ? (
           <div className="mt-6">

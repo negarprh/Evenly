@@ -52,13 +52,7 @@ export const GroupCard = ({ group, balance, compact = false }) => {
       </div>
 
       <div className="mt-5 flex items-center justify-between gap-3">
-        <div className="text-sm text-slate-500">
-          {balance?.net > 0
-            ? "This group owes you money."
-            : balance?.net < 0
-              ? "You still owe money here."
-              : "This group is currently balanced."}
-        </div>
+        <div />
         <Link to={`/groups/${group._id}`}>
           <Button variant="secondary">
             {compact ? "Open group" : "View group"}

@@ -71,10 +71,6 @@ a {
   @apply display-font text-xl font-semibold text-ink;
 }
 
-.section-copy {
-  @apply mt-1 text-sm text-slate-500;
-}
-
 .page-shell {
   @apply mx-auto w-full max-w-7xl space-y-6;
 }

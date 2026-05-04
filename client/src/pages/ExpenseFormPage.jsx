@@ -203,9 +203,7 @@ export const ExpenseFormPage = ({ mode = "create" }) => {
         <h1 className="mt-2 display-font text-4xl font-semibold text-ink">
           {mode === "edit" ? "Edit this expense" : "Add what you paid"}
         </h1>
-        <p className="mt-3 text-sm leading-6 text-slate-500">
-          {group.name} · Keep the details clear so everyone understands the charge, the people involved, and how it should be split.
-        </p>
+        <p className="mt-3 text-sm leading-6 text-slate-500">{group.name}</p>
       </Card>
 
       <form className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]" onSubmit={submit}>
@@ -217,7 +215,6 @@ export const ExpenseFormPage = ({ mode = "create" }) => {
               </span>
               <div>
                 <h2 className="section-title">1. What was paid?</h2>
-                <p className="section-copy">Add the title, amount, and who covered it.</p>
               </div>
             </div>
 
@@ -296,7 +293,6 @@ export const ExpenseFormPage = ({ mode = "create" }) => {
               </span>
               <div>
                 <h2 className="section-title">2. Who was involved?</h2>
-                <p className="section-copy">Select the people who should share this expense.</p>
               </div>
             </div>
 
@@ -351,7 +347,6 @@ export const ExpenseFormPage = ({ mode = "create" }) => {
               </span>
               <div>
                 <h2 className="section-title">3. How should it be split?</h2>
-                <p className="section-copy">Choose equal shares or assign custom amounts.</p>
               </div>
             </div>
 
@@ -428,7 +423,6 @@ export const ExpenseFormPage = ({ mode = "create" }) => {
 
           <Card className="p-6">
             <h2 className="section-title">Preview</h2>
-            <p className="section-copy">A quick check before you save.</p>
             <div className="mt-5 space-y-4 text-sm">
               <div className="rounded-[22px] bg-slate-50 p-4">
                 <div className="text-slate-500">Expense</div>

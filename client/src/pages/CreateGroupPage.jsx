@@ -56,9 +56,6 @@ export const CreateGroupPage = () => {
       <Card glow className="p-6">
         <div className="text-sm font-semibold uppercase tracking-[0.16em] text-amber-700">New shared group</div>
         <h1 className="mt-2 display-font text-4xl font-semibold text-ink">Start a shared group</h1>
-        <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-500">
-          Create a clear space for roommates, a trip, or any ongoing shared cost so everyone sees the same picture.
-        </p>
       </Card>
 
       <form className="panel space-y-6 p-6" onSubmit={submit}>
@@ -73,7 +70,7 @@ export const CreateGroupPage = () => {
             }}
             placeholder="Apartment 4B"
           />
-          <p className={`helper ${errors.name ? "text-danger-700" : ""}`}>{errors.name || "Pick a name people will recognize immediately."}</p>
+          {errors.name ? <p className="helper text-danger-700">{errors.name}</p> : null}
         </div>
 
         <div>

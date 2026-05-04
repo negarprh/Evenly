@@ -104,9 +104,6 @@ export const DashboardPage = () => {
           <div>
             <div className="text-sm font-semibold uppercase tracking-[0.16em] text-amber-700">Welcome back, {user?.name?.split(" ")[0] || "there"}</div>
             <h1 className="mt-2 display-font text-4xl font-semibold text-ink">Here’s where your shared expenses stand today.</h1>
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-500">
-              Keep an eye on what’s open, what’s already balanced, and which groups need attention before money conversations get awkward.
-            </p>
           </div>
           <Link to="/groups/new">
             <Button>
@@ -129,7 +126,6 @@ export const DashboardPage = () => {
           <div className="mb-4 flex items-center justify-between gap-3">
             <div>
               <h2 className="section-title">Your groups</h2>
-              <p className="section-copy">Each shared space shows where you stand right now.</p>
             </div>
             <Link to="/groups" className="inline-flex items-center gap-2 text-sm font-semibold text-amber-700">
               See all groups
@@ -165,7 +161,6 @@ export const DashboardPage = () => {
             </span>
             <div>
               <h2 className="section-title">Recent activity</h2>
-              <p className="section-copy">Updates from the groups you share with other people.</p>
             </div>
           </div>
 

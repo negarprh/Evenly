@@ -27,6 +27,7 @@ const tones = {
 export const StatCard = ({ label, value, tone = "groups", description }) => {
   const config = tones[tone] || tones.groups;
   const Icon = config.icon;
+  const text = description || config.description;
 
   return (
     <Card className="p-5">
@@ -39,7 +40,7 @@ export const StatCard = ({ label, value, tone = "groups", description }) => {
           <Icon size={18} />
         </span>
       </div>
-      <p className="mt-3 text-sm leading-6 text-slate-500">{description || config.description}</p>
+      {text ? <p className="mt-3 text-sm leading-6 text-slate-500">{text}</p> : null}
     </Card>
   );
 };

@@ -14,7 +14,6 @@ export const ExpenseList = ({ groupId, expenses, onSettle, onDelete }) => (
     <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
       <div>
         <h2 className="section-title">Expense timeline</h2>
-        <p className="section-copy">Track what was paid, who was involved, and which items still affect the group balance.</p>
       </div>
       <Link to={`/groups/${groupId}/expenses/new`}>
         <Button>Add what you paid</Button>
@@ -44,9 +43,6 @@ export const ExpenseList = ({ groupId, expenses, onSettle, onDelete }) => (
 
             <div className="text-left xl:text-right">
               <MoneyAmount amount={expense.amount} className="display-font text-3xl font-semibold" />
-              <div className="mt-2 text-sm text-slate-500">
-                {expense.isSettled ? "Kept in history" : "Still part of open balances"}
-              </div>
             </div>
           </div>
 

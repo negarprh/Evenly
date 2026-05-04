@@ -50,9 +50,6 @@ export const GroupsPage = () => {
           <div>
             <div className="text-sm font-semibold uppercase tracking-[0.16em] text-amber-700">Shared spaces</div>
             <h1 className="mt-2 display-font text-4xl font-semibold text-ink">Which groups are you part of?</h1>
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-500">
-              Roommates, couples, travel plans, and shared houses all live here with balances and recent movement kept in one place.
-            </p>
           </div>
           <Link to="/groups/new">
             <Button>
