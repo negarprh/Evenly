@@ -7,10 +7,21 @@ import { Card } from "./Card";
 import { MoneyAmount } from "./MoneyAmount";
 import { SplitTypeBadge } from "./SplitTypeBadge";
 import { StatusBadge } from "./StatusBadge";
+import { useAuth } from "../contexts/AuthContext";
 import { calendarDate, timeAgo, userName } from "../utils/format";
 
-export const ExpenseList = ({ groupId, expenses, onSettle, onDelete }) => (
-  <Card className="p-6">
+const canSettleExpense = (expense, userId) => {
+  if (!userId || expense.isSettled) return false;
+  const payerId = String(expense.paidBy?._id || expense.paidBy || "");
+  if (payerId === String(userId)) return false;
+  return (expense.splits || []).some((split) => String(split.user?._id || split.user) === String(userId) && Number(split.amount) > 0);
+};
+
+export const ExpenseList = ({ groupId, expenses, onSettle, onDelete }) => {
+  const { user } = useAuth();
+
+  return (
+    <Card className="p-6">
     <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
       <div>
         <h2 className="section-title">Expense timeline</h2>
@@ -70,7 +81,7 @@ export const ExpenseList = ({ groupId, expenses, onSettle, onDelete }) => (
             </div>
 
             <div className="flex flex-wrap items-center gap-2 lg:justify-end">
-              {!expense.isSettled ? (
+              {canSettleExpense(expense, user?._id) ? (
                 <Button variant="secondary" onClick={() => onSettle(expense)}>
                   <CheckCircle2 size={16} />
                   Mark as settled
@@ -91,5 +102,6 @@ export const ExpenseList = ({ groupId, expenses, onSettle, onDelete }) => (
         </article>
       ))}
     </div>
-  </Card>
-);
+    </Card>
+  );
+};

@@ -19,6 +19,14 @@ const emitUpdates = async (groupId, action, expense) => {
   emitExpenseChanged(groupId, action, expense, balances);
 };
 
+const canUserSettleExpense = (expense, userId) => {
+  const payerId = String(expense.paidBy);
+  const requesterId = String(userId);
+  if (payerId === requesterId) return false;
+
+  return expense.splits.some((split) => String(split.user) === requesterId && Number(split.amount) > 0);
+};
+
 export const listExpenses = asyncHandler(async (req, res) => {
   await getGroupForMember(req.params.id, req.user._id);
   const expenses = await populateExpense(
@@ -139,6 +147,9 @@ export const settleExpense = asyncHandler(async (req, res) => {
   const expense = await Expense.findById(req.params.id);
   if (!expense) throw new ApiError(404, "Expense not found", "EXPENSE_NOT_FOUND");
   const group = await getGroupForMember(expense.group, req.user._id);
+  if (!canUserSettleExpense(expense, req.user._id)) {
+    throw new ApiError(403, "Only a user who owes on this expense can mark it settled", "EXPENSE_SETTLE_FORBIDDEN");
+  }
 
   expense.isSettled = true;
   expense.settledAt = new Date();
