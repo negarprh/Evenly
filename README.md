@@ -2,7 +2,7 @@
 
 Shared expense tracking for roommates, trips, and teams. Record payments, split costs, and see who owes whom.
 
-**[Open the live demo →](https://evenly-client.onrender.com/)**
+**[Open the live demo](https://evenly-client.onrender.com/)**
 
 ## Dashboard
 
