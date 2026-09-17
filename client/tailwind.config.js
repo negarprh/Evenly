@@ -4,7 +4,7 @@ export default {
     extend: {
       colors: {
         ink: "#1f2933",
-        paper: "#f1ece3",
+        paper: "#f7f7f5",
         panel: "#ffffff",
         sand: "#ece4d8",
         line: "#e5e7eb",
@@ -37,10 +37,10 @@ export default {
       },
       boxShadow: {
         soft: "0 24px 60px rgba(31, 41, 51, 0.08)",
-        card: "0 10px 30px rgba(31, 41, 51, 0.06)"
+        card: "0 1px 3px rgba(31, 41, 51, 0.04)"
       },
       borderRadius: {
-        "2xl": "1.25rem"
+        "2xl": "1rem"
       }
     }
   },

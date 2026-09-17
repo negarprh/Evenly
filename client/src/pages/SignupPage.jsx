@@ -63,9 +63,9 @@ export const SignupPage = () => {
 
   return (
     <AuthShell
-      title="Create your Evenly account"
-      subtitle="Get into your dashboard quickly so other people can add you to shared groups."
-      asideTitle="Shared expenses work better when joining is simple."
+      title="Create an account"
+      subtitle="Track expenses with your group."
+      asideTitle="Share costs. Stay organized."
     >
       <form className="space-y-4" onSubmit={submit}>
         <div>

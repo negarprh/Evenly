@@ -11,31 +11,30 @@ export const BalanceBoard = ({ balances, totalSpent = 0 }) => {
 
   return (
     <div className="grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
-      <Card className="surface-glow p-6">
-        <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
+      <Card className="p-6">
+        <div className="flex flex-col gap-5">
           <div>
-            <div className="text-sm font-semibold text-slate-500">Who owes what</div>
-            <h2 className="mt-2 display-font text-3xl font-semibold text-ink">Shared balances at a glance</h2>
+            <h2 className="mt-2 display-font text-3xl font-semibold text-ink">Balances</h2>
           </div>
-          <div className="grid gap-2 sm:grid-cols-3 xl:max-w-[440px]">
+          <div className="grid gap-2 sm:grid-cols-3">
             <MetricTile icon={Receipt} label="Total spending" value={money(totalSpent)} tone="slate" />
             <MetricTile icon={Wallet} label="Still open" value={money(balances.unsettledTotal)} tone="warm" />
             <MetricTile icon={Scale} label="Open expenses" value={balances.unsettledExpenseCount} tone="teal" />
           </div>
         </div>
 
-        <div className="mt-6 rounded-[24px] bg-white/80 p-5">
+        <div className="mt-6 border-t border-line pt-5">
           <div className="text-sm font-semibold text-slate-500">Suggested settlements</div>
           {balances.settlements.length === 0 ? (
             <div className="mt-4">
-              <EmptyState title="Everyone is settled up">No one owes anything in this group right now.</EmptyState>
+              <EmptyState title="All settled">No outstanding balances.</EmptyState>
             </div>
           ) : (
             <div className="mt-4 space-y-3">
               {balances.settlements.map((settlement, index) => (
                 <div
                   key={`${settlement.from.id}-${settlement.to.id}-${index}`}
-                  className="flex flex-col gap-4 rounded-[22px] border border-amber-200 bg-amber-50/80 p-4 md:flex-row md:items-center md:justify-between"
+                  className="flex flex-col gap-4 rounded-xl border border-amber-200 bg-amber-50/80 p-4 md:flex-row md:items-center md:justify-between"
                 >
                   <div className="flex items-center gap-3">
                     <Avatar user={settlement.from} size="sm" />
@@ -47,7 +46,6 @@ export const BalanceBoard = ({ balances, totalSpent = 0 }) => {
                   <div className="hidden h-px flex-1 bg-amber-200 md:block" />
                   <div className="text-left md:text-right">
                     <MoneyAmount amount={settlement.amount} tone="default" className="display-font text-2xl font-semibold" />
-                    <div className="mt-1 text-sm text-slate-500">{settlement.label}</div>
                   </div>
                 </div>
               ))}
@@ -59,13 +57,13 @@ export const BalanceBoard = ({ balances, totalSpent = 0 }) => {
       <Card className="p-6">
         <div className="flex items-center justify-between gap-3">
           <div>
-            <h3 className="section-title">Member snapshot</h3>
+            <h3 className="section-title">Member balances</h3>
           </div>
         </div>
 
         <div className="mt-5 space-y-3">
           {balances.summary.map((row) => (
-            <div key={row.user.id} className="rounded-[22px] border border-slate-100 bg-slate-50/70 p-4">
+            <div key={row.user.id} className="rounded-xl border border-slate-100 bg-slate-50/70 p-4">
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3">
                   <Avatar user={row.user} size="sm" />
@@ -94,14 +92,14 @@ const MetricTile = ({ icon: Icon, label, value, tone = "slate" }) => {
   };
 
   return (
-    <div className="rounded-2xl bg-white/90 px-2.5 py-2">
-      <div className="flex items-center gap-1.5 text-[10px] font-semibold text-slate-500">
+    <div className="rounded-xl bg-slate-50 px-3 py-3">
+      <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-500">
         <span className={`flex h-5 w-5 items-center justify-center rounded-lg ${tones[tone]}`}>
           <Icon size={12} />
         </span>
         {label}
       </div>
-      <div className="mt-1 display-font text-base font-semibold text-ink">{value}</div>
+      <div className="mt-1 display-font text-xl font-semibold text-ink">{value}</div>
     </div>
   );
 };

@@ -75,12 +75,12 @@ export const DashboardPage = () => {
           <div className="mt-4 shimmer h-12 w-80 rounded-3xl" />
           <div className="mt-3 shimmer h-4 w-[28rem] rounded-full" />
         </Card>
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
           {Array.from({ length: 4 }).map((_, index) => (
             <SkeletonCard key={index} />
           ))}
         </div>
-        <div className="grid gap-4 xl:grid-cols-[1.15fr_0.85fr]">
+        <div className="grid items-start gap-6 xl:grid-cols-[1.55fr_1fr]">
           <div className="space-y-4">
             <SkeletonRow />
             <SkeletonRow />
@@ -88,7 +88,7 @@ export const DashboardPage = () => {
           <Card className="p-6">
             <div className="space-y-4">
               {Array.from({ length: 4 }).map((_, index) => (
-                <div key={index} className="shimmer h-16 rounded-[22px]" />
+                <div key={index} className="shimmer h-16 rounded-xl" />
               ))}
             </div>
           </Card>
@@ -103,47 +103,47 @@ export const DashboardPage = () => {
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <div className="text-sm font-semibold uppercase tracking-[0.16em] text-amber-700">Welcome back, {user?.name?.split(" ")[0] || "there"}</div>
-            <h1 className="mt-2 display-font text-4xl font-semibold text-ink">Here’s where your shared expenses stand today.</h1>
+            <h1 className="mt-2 display-font text-3xl font-semibold text-ink">Overview</h1>
           </div>
           <Link to="/groups/new">
             <Button>
               <Plus size={16} />
-              Start a shared group
+              Create group
             </Button>
           </Link>
         </div>
       </Card>
 
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
         <StatCard label="Groups" value={stats.totalGroups} tone="groups" />
         <StatCard label="You owe" value={money(stats.owe)} tone="owe" />
-        <StatCard label="Owed back to you" value={money(stats.owed)} tone="owed" />
+        <StatCard label="You're owed" value={money(stats.owed)} tone="owed" />
         <StatCard label="Open expenses" value={stats.unsettledExpenses} tone="expenses" />
       </div>
 
-      <div className="grid gap-4 xl:grid-cols-[1.15fr_0.85fr]">
+      <div className="grid items-start gap-6 xl:grid-cols-[1.55fr_1fr]">
         <section>
           <div className="mb-4 flex items-center justify-between gap-3">
             <div>
               <h2 className="section-title">Your groups</h2>
             </div>
             <Link to="/groups" className="inline-flex items-center gap-2 text-sm font-semibold text-amber-700">
-              See all groups
+              View all
               <ArrowRight size={16} />
             </Link>
           </div>
 
           {groups.length === 0 ? (
             <EmptyState
-              title="Start your first shared group"
+              title="Create your first group"
               action={
                 <Link to="/groups/new">
-                  <Button>Start a group</Button>
+                  <Button>Create group</Button>
                 </Link>
               }
               icon={FolderHeart}
             >
-              Create a group for roommates, a trip, or any shared cost you want to keep clear.
+              Add a group to start tracking shared expenses.
             </EmptyState>
           ) : (
             <div className="space-y-4">
@@ -169,16 +169,16 @@ export const DashboardPage = () => {
               <EmptyState title="No activity yet">Updates will appear here when expenses are added or settled.</EmptyState>
             </div>
           ) : (
-            <div className="mt-6 space-y-3">
+            <div className="mt-4 divide-y divide-slate-100">
               {activities.map((activity) => (
                 <Link
                   key={activity._id}
                   to={`/groups/${activity.groupId}`}
-                  className="block rounded-[22px] border border-slate-200 bg-slate-100/85 p-4 transition hover:bg-white"
+                  className="activity-row"
                 >
                   <div className="font-semibold text-ink">{activity.message}</div>
                   <div className="mt-1 text-sm text-slate-500">{activity.groupName}</div>
-                  <div className="mt-3 text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{timeAgo(activity.createdAt)}</div>
+                  <div className="mt-2 text-xs text-slate-400">{timeAgo(activity.createdAt)}</div>
                 </Link>
               ))}
             </div>

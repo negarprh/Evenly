@@ -104,9 +104,9 @@ export const GroupDetailPage = () => {
     setModalState({
       type: "settle",
       expense,
-      title: "Mark this expense as settled?",
-      description: "This keeps the expense in history, but removes it from open balances.",
-      confirmLabel: "Yes, mark settled"
+      title: "Settle this expense?",
+      description: "The entire expense will leave open balances and remain in history.",
+      confirmLabel: "Mark settled"
     });
   };
 
@@ -115,7 +115,7 @@ export const GroupDetailPage = () => {
       type: "delete",
       expense,
       title: "Delete this expense?",
-      description: "This removes it from the group history and recalculates balances right away.",
+      description: "This permanently removes the expense and updates balances.",
       confirmLabel: "Delete expense"
     });
   };
@@ -161,7 +161,7 @@ export const GroupDetailPage = () => {
         <Card className="p-6">
           <div className="space-y-4">
             {Array.from({ length: 4 }).map((_, index) => (
-              <div key={index} className="shimmer h-16 rounded-[22px]" />
+              <div key={index} className="shimmer h-16 rounded-xl" />
             ))}
           </div>
         </Card>
@@ -188,8 +188,7 @@ export const GroupDetailPage = () => {
       <Card glow className="p-6">
         <div className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
           <div>
-            <div className="text-sm font-semibold uppercase tracking-[0.16em] text-amber-700">Group detail</div>
-            <h1 className="mt-2 display-font text-4xl font-semibold text-ink">{group.name}</h1>
+            <h1 className="mt-2 display-font text-3xl font-semibold text-ink">{group.name}</h1>
             {group.description ? <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-500">{group.description}</p> : null}
             <div className="mt-5 flex flex-wrap items-center gap-4 text-sm text-slate-500">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-2">
@@ -203,7 +202,7 @@ export const GroupDetailPage = () => {
           <Link to={`/groups/${id}/expenses/new`}>
             <Button>
               <Plus size={16} />
-              Add what you paid
+              Add expense
             </Button>
           </Link>
         </div>
@@ -215,7 +214,7 @@ export const GroupDetailPage = () => {
         <Card className="p-6">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h2 className="section-title">People in this group</h2>
+              <h2 className="section-title">Members</h2>
             </div>
             <span className="rounded-full bg-slate-100 px-3 py-1.5 text-sm font-semibold text-slate-600">
               {group.members.length} total
@@ -239,7 +238,7 @@ export const GroupDetailPage = () => {
               <MailPlus size={18} />
             </span>
             <div>
-              <h2 className="section-title">Add someone by email</h2>
+              <h2 className="section-title">Add member</h2>
             </div>
           </div>
 
@@ -268,27 +267,27 @@ export const GroupDetailPage = () => {
           title="No expenses yet"
           action={
             <Link to={`/groups/${id}/expenses/new`}>
-              <Button>Add what you paid</Button>
+              <Button>Add expense</Button>
             </Link>
           }
         >
-          When someone pays for something, add it here and Evenly will calculate who owes what.
+          Add an expense to calculate each member's share.
         </EmptyState>
       ) : (
         <ExpenseList groupId={id} expenses={expenses} onSettle={requestSettle} onDelete={requestDelete} />
       )}
 
       <Card className="p-6">
-        <h2 className="section-title">Activity feed</h2>
+        <h2 className="section-title">Activity</h2>
 
         {(group.activities || []).length === 0 ? (
           <div className="mt-6">
             <EmptyState title="No activity yet">Updates will appear here when expenses are added or settled.</EmptyState>
           </div>
         ) : (
-          <div className="mt-6 space-y-3">
+          <div className="mt-4 divide-y divide-slate-100">
             {group.activities.map((activity) => (
-              <div key={activity._id} className="rounded-[22px] border border-slate-200 bg-slate-100/85 p-4">
+              <div key={activity._id} className="activity-row">
                 <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                   <div>
                     <div className="font-semibold text-ink">{activity.message}</div>

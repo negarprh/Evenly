@@ -33,7 +33,7 @@ export const AppLayout = () => {
 
   const navClass = ({ isActive }) =>
     `flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-semibold transition ${
-      isActive ? "bg-amber-50 text-amber-800" : "text-slate-600 hover:bg-white hover:text-ink"
+      isActive ? "bg-ink text-white shadow-sm" : "text-slate-600 hover:bg-white hover:text-ink"
     }`;
 
   const goToProfile = () => {
@@ -47,14 +47,15 @@ export const AppLayout = () => {
   };
 
   return (
-    <div className="min-h-screen bg-paper">
-      <aside className="sidebar-gradient fixed inset-y-0 left-0 hidden w-[288px] border-r border-white/70 px-5 py-6 lg:flex lg:flex-col">
+    <div className="app-layout min-h-screen bg-paper">
+      <aside className="sidebar-gradient fixed inset-y-0 left-0 hidden w-[232px] border-r border-line px-5 py-6 lg:flex lg:flex-col">
         <Link to="/dashboard" className="rounded-2xl px-3 py-2">
           <LogoMark />
         </Link>
 
         <div className="mt-8">
-          <div className="px-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Navigate</div>
+
+          <div className="px-4 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400">Workspace</div>
           <nav className="mt-3 space-y-2">
             {navigation.map((item) => {
               const Icon = item.icon;
@@ -68,18 +69,7 @@ export const AppLayout = () => {
           </nav>
         </div>
 
-        <div className="mt-6 rounded-[24px] border border-white/70 bg-white/85 p-4">
-          <div className="text-sm font-semibold text-slate-500">Quick action</div>
-          <div className="mt-3 text-sm leading-6 text-slate-500">
-            Start a new shared space whenever a roommate setup, trip, or household budget needs clarity.
-          </div>
-          <Button className="mt-4 w-full" onClick={() => navigate("/groups/new")}>
-            <Plus size={16} />
-            Start a shared group
-          </Button>
-        </div>
-
-        <div className="mt-auto rounded-[24px] border border-white/70 bg-white/90 p-4">
+        <div className="mt-auto rounded-xl border border-white/70 bg-white/90 p-4">
           <div className="flex items-center gap-3">
             <Avatar user={user} />
             <div className="min-w-0">
@@ -87,14 +77,12 @@ export const AppLayout = () => {
               <div className="truncate text-sm text-slate-500">{user?.email}</div>
             </div>
           </div>
-          <p className="mt-4 text-xs text-slate-500">
-            Use the profile menu in the top-right corner to update your details or log out.
-          </p>
+
         </div>
       </aside>
 
-      <div className="lg:pl-[288px]">
-        <header className="sticky top-0 z-20 border-b border-white/70 bg-paper/90 backdrop-blur">
+      <div className="lg:pl-[232px]">
+        <header className="sticky top-0 z-20 border-b border-line bg-white/90 backdrop-blur">
           <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 md:px-8">
             <div className="flex items-center justify-between gap-4">
               <Link to="/dashboard" className="lg:hidden">
@@ -102,14 +90,16 @@ export const AppLayout = () => {
               </Link>
 
               <div className="hidden lg:block">
-                <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Shared money made calmer</div>
-                <div className="display-font text-2xl font-semibold text-ink">
+
+                <div className="text-sm font-semibold text-slate-500">
                   {location.pathname.startsWith("/groups/") && !location.pathname.endsWith("/new")
-                    ? "Group space"
+                    ? (location.pathname.endsWith("/expenses/new") ? "Add expense" : "Group")
                     : location.pathname === "/groups"
                       ? "Your groups"
                       : location.pathname === "/groups/new"
-                        ? "Start a shared group"
+                        ? "Create group"
+                        : location.pathname.startsWith("/expenses/")
+                          ? "Edit expense"
                         : location.pathname === "/profile"
                           ? "Your profile"
                           : "Dashboard"}
@@ -117,16 +107,18 @@ export const AppLayout = () => {
               </div>
 
               <div className="flex items-center gap-3">
-                <Button className="hidden sm:inline-flex" onClick={() => navigate("/groups/new")}>
+                {!["/dashboard", "/groups", "/groups/new"].includes(location.pathname) ? <Button className="hidden sm:inline-flex" onClick={() => navigate("/groups/new")}>
                   <Plus size={16} />
-                  Start a shared group
-                </Button>
+                  Create group
+                </Button> : null}
 
                 <div className="relative" ref={profileMenuRef}>
                   <button
                     className="inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/85 px-2 py-2 text-sm font-semibold text-slate-700 transition hover:bg-white"
                     onClick={() => setProfileMenuOpen((open) => !open)}
                     type="button"
+                    aria-label="Account menu"
+                    aria-expanded={profileMenuOpen}
                   >
                     <Avatar user={user} size="sm" />
                     <span className="hidden pr-1 sm:block">{user?.name}</span>
@@ -179,7 +171,7 @@ export const AppLayout = () => {
           </div>
         </header>
 
-        <main className="px-4 py-6 md:px-8">
+        <main className="px-4 py-8 md:px-8">
           <Outlet />
         </main>
       </div>

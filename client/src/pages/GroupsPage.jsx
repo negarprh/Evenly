@@ -48,13 +48,12 @@ export const GroupsPage = () => {
       <Card glow className="p-6">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <div className="text-sm font-semibold uppercase tracking-[0.16em] text-amber-700">Shared spaces</div>
-            <h1 className="mt-2 display-font text-4xl font-semibold text-ink">Which groups are you part of?</h1>
+            <h1 className="mt-2 display-font text-3xl font-semibold text-ink">Your groups</h1>
           </div>
           <Link to="/groups/new">
             <Button>
               <Plus size={16} />
-              Start a shared group
+              Create group
             </Button>
           </Link>
         </div>
@@ -68,15 +67,15 @@ export const GroupsPage = () => {
         </div>
       ) : groups.length === 0 ? (
         <EmptyState
-          title="Start your first shared group"
+          title="Create your first group"
           action={
             <Link to="/groups/new">
-              <Button>Start a group</Button>
+              <Button>Create group</Button>
             </Link>
           }
           icon={FolderHeart}
         >
-          Create a group for roommates, a trip, or any shared cost you want to keep clear.
+          Add a group to start tracking shared expenses.
         </EmptyState>
       ) : (
         <div className="grid gap-4 xl:grid-cols-2">

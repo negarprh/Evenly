@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
+import { ArrowRight, Check, Receipt, ArrowUpRight } from "lucide-react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Button } from "../components/Button";
 import { LogoMark } from "../components/LogoMark";
@@ -50,9 +50,9 @@ export const LoginPage = () => {
 
   return (
     <AuthShell
-      title="Get back into your shared groups"
-      subtitle="Sign in quickly and pick up where the balances left off."
-      asideTitle="Money conversations feel easier when everyone sees the same numbers."
+      title="Sign in"
+      subtitle="Welcome back to Evenly."
+      asideTitle="Shared expenses. Clear balances."
     >
       <form className="space-y-3.5" onSubmit={submit}>
         <div>
@@ -96,50 +96,39 @@ export const LoginPage = () => {
 };
 
 const AuthShell = ({ title, subtitle, asideTitle, children }) => (
-  <div className="auth-backdrop grid min-h-screen overflow-hidden lg:grid-cols-[minmax(0,1fr)_480px]">
-    <section className="hidden border-r border-white/70 px-8 py-8 lg:flex lg:items-center">
-      <div className="mx-auto w-full max-w-2xl">
+  <div className="auth-page">
+    <div className="auth-frame">
+      <section className="auth-story">
         <LogoMark />
-        <h1 className="mt-7 max-w-xl display-font text-4xl font-semibold leading-tight text-ink">{asideTitle}</h1>
-        <p className="mt-3 max-w-xl text-sm leading-6 text-slate-500">
-          Evenly helps roommates, couples, and travel groups keep shared spending calm, clear, and easy to settle.
-        </p>
-
-        <div className="mt-7 grid gap-3">
-          {[
-            "Apartment 4B keeps groceries, internet, and supplies in one place.",
-            "Trip groups show who paid, who joined, and what still needs settling.",
-            "Live updates keep every balance card current without a refresh."
-          ].map((item) => (
-            <div key={item} className="rounded-[22px] border border-white/70 bg-white/85 p-4 shadow-card">
-              <div className="flex items-start gap-3">
-                <span className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-xl bg-amber-100 text-amber-700">
-                  <CheckCircle2 size={14} />
-                </span>
-                <p className="text-sm leading-5 text-slate-600">{item}</p>
-              </div>
-            </div>
-          ))}
+        <div className="auth-intro">
+          <span className="eyebrow">A little more in balance</span>
+          <h1>{asideTitle}</h1>
+          <p>Track group spending and see who owes whom.</p>
         </div>
-      </div>
-    </section>
-
-    <section className="flex items-center justify-center p-4 md:p-6">
-      <div className="w-full max-w-md">
-        <div className="mb-4 lg:hidden">
-          <LogoMark />
-        </div>
-        <div className="panel p-5 md:p-6">
-          <div className="flex items-center gap-3 text-amber-700">
-            <Sparkles size={18} />
-            <span className="text-sm font-semibold uppercase tracking-[0.16em]">Split simply</span>
+        <div className="auth-demo" aria-label="Example of a shared expense split">
+          <div className="demo-heading"><span className="demo-icon"><Receipt size={21} /></span><div><strong>Weekend away</strong><span>Shared with 3 people</span></div><span className="demo-example">Example</span></div>
+          <div className="demo-total"><span>Dinner together</span><strong>$126<span>.00</span></strong></div>
+          <div className="demo-people">
+            {[{ initials: "SC", name: "Sarah", color: "#315b68" }, { initials: "AK", name: "Ali", color: "#856146" }, { initials: "PS", name: "Priya", color: "#6b657f" }].map(person => (
+              <div key={person.name}><span className="demo-avatar" style={{ background: person.color }}>{person.initials}</span><span>{person.name}</span><strong>$42.00</strong></div>
+            ))}
           </div>
-          <h2 className="mt-3 display-font text-2xl font-semibold text-ink">{title}</h2>
-          <p className="mt-2 text-sm leading-6 text-slate-500">{subtitle}</p>
-          <div className="mt-5">{children}</div>
+          <div className="demo-footer"><span><Check size={15} /> Split equally</span><span>3 of 3 included</span></div>
         </div>
-      </div>
-    </section>
+        <div className="auth-note"><span className="note-icon"><ArrowUpRight size={18} /></span><span>Less math.<br /><strong>More time together.</strong></span></div>
+        <div className="auth-story-footer"><span>Roommates · Trips · Everyday life</span><span>Evenly</span></div>
+      </section>
+      <section className="auth-form-side">
+        <div className="auth-mobile-logo"><LogoMark /></div>
+        <div className="auth-form-content">
+          <span className="eyebrow">YOUR SHARED EXPENSES, SORTED</span>
+          <h2>{title}</h2>
+          <p className="mt-3 text-sm text-slate-500">{subtitle}</p>
+          <div className="mt-8">{children}</div>
+        </div>
+        <p className="auth-footnote">Evenly / Shared expense tracker</p>
+      </section>
+    </div>
   </div>
 );
 

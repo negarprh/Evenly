@@ -65,10 +65,9 @@ export const ProfilePage = () => {
   return (
     <div className="mx-auto max-w-3xl space-y-6">
       <Card glow className="p-6">
-        <div className="text-sm font-semibold uppercase tracking-[0.16em] text-amber-700">Profile</div>
-        <h1 className="mt-2 display-font text-4xl font-semibold text-ink">Your account details</h1>
+        <h1 className="mt-2 display-font text-3xl font-semibold text-ink">Account settings</h1>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-500">
-          Update your name or password here. Email is read-only and cannot be changed from this page.
+          Update your name or password.
         </p>
       </Card>
 
@@ -91,7 +90,7 @@ export const ProfilePage = () => {
         <div>
           <label className="label">Email</label>
           <input className="field bg-slate-50 text-slate-500" value={form.email} disabled readOnly />
-          <p className="helper">Email is locked for now.</p>
+          <p className="helper">Email cannot be changed.</p>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">

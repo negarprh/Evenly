@@ -13,7 +13,7 @@ export const ConfirmModal = ({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/35 px-4">
+    <div className="fixed inset-0 z-50 !mt-0 flex items-center justify-center bg-slate-900/35 px-4">
       <div className="panel w-full max-w-md p-6">
         <h3 className="display-font text-2xl font-semibold text-ink">{title}</h3>
         <p className="mt-3 text-sm leading-6 text-slate-500">{description}</p>

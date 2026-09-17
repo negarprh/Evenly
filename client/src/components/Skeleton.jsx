@@ -7,7 +7,7 @@ export const SkeletonCard = ({ className = "" }) => (
 );
 
 export const SkeletonRow = ({ className = "" }) => (
-  <div className={`flex items-center gap-4 rounded-[24px] border border-slate-100 bg-white p-4 ${className}`.trim()}>
+  <div className={`flex items-center gap-4 rounded-xl border border-slate-100 bg-white p-4 ${className}`.trim()}>
     <div className="shimmer h-11 w-11 rounded-full" />
     <div className="min-w-0 flex-1 space-y-3">
       <div className="shimmer h-4 w-40 rounded-full" />

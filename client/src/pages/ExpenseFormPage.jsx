@@ -197,24 +197,21 @@ export const ExpenseFormPage = ({ mode = "create" }) => {
   return (
     <div className="mx-auto max-w-5xl space-y-6">
       <Card glow className="p-6">
-        <div className="text-sm font-semibold uppercase tracking-[0.16em] text-amber-700">
-          {mode === "edit" ? "Update expense" : "New expense"}
-        </div>
-        <h1 className="mt-2 display-font text-4xl font-semibold text-ink">
-          {mode === "edit" ? "Edit this expense" : "Add what you paid"}
+        <h1 className="mt-2 display-font text-3xl font-semibold text-ink">
+          {mode === "edit" ? "Edit expense" : "Add expense"}
         </h1>
         <p className="mt-3 text-sm leading-6 text-slate-500">{group.name}</p>
       </Card>
 
-      <form className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]" onSubmit={submit}>
-        <div className="space-y-6">
+      <form className="expense-form grid items-start gap-6 xl:grid-cols-[1.15fr_0.85fr]" onSubmit={submit}>
+        <div className="space-y-6 min-w-0">
           <Card className="p-6">
             <div className="flex items-center gap-3">
               <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-100 text-amber-700">
                 <PencilLine size={18} />
               </span>
               <div>
-                <h2 className="section-title">1. What was paid?</h2>
+                <h2 className="section-title">1. Expense details</h2>
               </div>
             </div>
 
@@ -292,7 +289,7 @@ export const ExpenseFormPage = ({ mode = "create" }) => {
                 <Users size={18} />
               </span>
               <div>
-                <h2 className="section-title">2. Who was involved?</h2>
+                <h2 className="section-title">2. Participants</h2>
               </div>
             </div>
 
@@ -305,7 +302,7 @@ export const ExpenseFormPage = ({ mode = "create" }) => {
               </Button>
             </div>
 
-            <div className="mt-5 grid gap-3 md:grid-cols-2">
+            <div className="mt-5 grid gap-3">
               {group.members.map((member) => {
                 const selected = form.participants.includes(member._id);
                 return (
@@ -313,7 +310,7 @@ export const ExpenseFormPage = ({ mode = "create" }) => {
                     type="button"
                     key={member._id}
                     onClick={() => toggleParticipant(member._id)}
-                    className={`flex items-center justify-between rounded-[22px] border p-4 text-left transition ${
+                    className={`flex items-center justify-between rounded-xl border p-4 text-left transition ${
                       selected ? "border-amber-200 bg-amber-50" : "border-slate-200 bg-white hover:bg-slate-50"
                     }`}
                   >
@@ -339,18 +336,18 @@ export const ExpenseFormPage = ({ mode = "create" }) => {
           </Card>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-6 min-w-0">
           <Card className="p-6">
             <div className="flex items-center gap-3">
               <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-info-50 text-info-700">
                 <Equal size={18} />
               </span>
               <div>
-                <h2 className="section-title">3. How should it be split?</h2>
+                <h2 className="section-title">3. Split method</h2>
               </div>
             </div>
 
-            <div className="mt-5 grid grid-cols-2 gap-2 rounded-[24px] bg-slate-100 p-1">
+            <div className="mt-5 grid grid-cols-2 gap-2 rounded-xl bg-slate-100 p-1">
               {[
                 { id: "equal", label: "Split equally" },
                 { id: "custom", label: "Custom amounts" }
@@ -358,7 +355,7 @@ export const ExpenseFormPage = ({ mode = "create" }) => {
                 <button
                   type="button"
                   key={type.id}
-                  className={`rounded-[20px] px-4 py-3 text-sm font-semibold transition ${
+                  className={`rounded-lg px-4 py-3 text-sm font-semibold transition ${
                     form.splitType === type.id ? "bg-white text-ink shadow-sm" : "text-slate-500"
                   }`}
                   onClick={() => setForm({ ...form, splitType: type.id })}
@@ -391,7 +388,7 @@ export const ExpenseFormPage = ({ mode = "create" }) => {
                     </div>
                   );
                 })}
-                <div className="rounded-[22px] bg-slate-50 p-4 text-sm">
+                <div className="rounded-xl bg-slate-50 p-4 text-sm">
                   <div className="font-semibold text-ink">
                     Assigned: <MoneyAmount amount={customAssigned} />
                   </div>
@@ -400,7 +397,7 @@ export const ExpenseFormPage = ({ mode = "create" }) => {
                 </div>
               </div>
             ) : (
-              <div className="mt-5 rounded-[22px] bg-amber-50/80 p-4">
+              <div className="mt-5 rounded-xl bg-amber-50/80 p-4">
                 <div className="font-semibold text-ink">
                   {equalPreview.length > 0
                     ? `Each person pays ${money((Number(form.amount || 0) / equalPreview.length) || 0)}`
@@ -421,19 +418,19 @@ export const ExpenseFormPage = ({ mode = "create" }) => {
             )}
           </Card>
 
-          <Card className="p-6">
-            <h2 className="section-title">Preview</h2>
-            <div className="mt-5 space-y-4 text-sm">
-              <div className="rounded-[22px] bg-slate-50 p-4">
+          <Card className="expense-preview p-6">
+            <h2 className="section-title">Summary</h2>
+            <div className="mt-5 divide-y divide-slate-200 text-sm">
+              <div className="py-4 first:pt-0">
                 <div className="text-slate-500">Expense</div>
                 <div className="mt-1 display-font text-2xl font-semibold text-ink">{form.title || "Untitled expense"}</div>
               </div>
-              <div className="rounded-[22px] bg-slate-50 p-4">
+              <div className="py-4 first:pt-0">
                 <div className="text-slate-500">Total amount</div>
                 <div className="mt-1 display-font text-2xl font-semibold text-ink">{money(form.amount || 0)}</div>
               </div>
-              <div className="rounded-[22px] bg-slate-50 p-4">
-                <div className="text-slate-500">People involved</div>
+              <div className="py-4 first:pt-0">
+                <div className="text-slate-500">Participants</div>
                 <div className="mt-1 font-semibold text-ink">{form.participants.length} selected</div>
               </div>
             </div>
