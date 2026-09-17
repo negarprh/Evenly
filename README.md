@@ -24,57 +24,42 @@ Amounts display in USD. Settlement records the entire expense as settled; it doe
 
 ## Screenshots
 
-Screenshots use sample data. Select an image to view it at full size.
+Sample data. Click any image to view it at full size.
 
-[Accounts](#sign-in) · [Groups](#your-groups) · [Splits](#equal-split) · [Balances](#group-balances) · [Expenses](#expenses) · [Mobile](#mobile-dashboard)
-
-### Sign in
-
-[![Sign-in form](docs/screenshots/sign-in.png)](docs/screenshots/sign-in.png)
-
-### Create an account
-
-[![Account registration form](docs/screenshots/sign-up.png)](docs/screenshots/sign-up.png)
-
-### Your groups
-
-[![Group list with members and open expense totals](docs/screenshots/groups.png)](docs/screenshots/groups.png)
-
-### Create a group
-
-[![Group creation form](docs/screenshots/create-group.png)](docs/screenshots/create-group.png)
-
-### Members and adding a member
-
-Add an existing account using its email address.
-
-[![Group members and add-member form](docs/screenshots/members.png)](docs/screenshots/members.png)
-
-### Equal split
-
-Select the payer and participants, then review each person’s share.
-
-[![Expense editor with equal shares](docs/screenshots/equal-split.png)](docs/screenshots/equal-split.png)
-
-### Custom amounts
-
-Assign individual shares that add up to the expense total.
-
-[![Expense editor with custom amounts](docs/screenshots/custom-split.png)](docs/screenshots/custom-split.png)
-
-### Group balances
-
-[![Suggested repayments and member balances](docs/screenshots/balances.png)](docs/screenshots/balances.png)
-
-### Expenses
-
-Open and settled expenses remain visible, with edit and delete actions.
-
-[![Expense history with split types and settlement status](docs/screenshots/expenses.png)](docs/screenshots/expenses.png)
-
-### Mark an expense settled
-
-[![Settlement confirmation explaining the effect on balances](docs/screenshots/settlement.png)](docs/screenshots/settlement.png)
+<table>
+  <tr>
+    <td width="50%" align="center" valign="top"><strong>Dashboard</strong><br><br><a href="docs/screenshots/dashboard.png"><img src="docs/screenshots/dashboard.png" alt="Dashboard" width="360"></a></td>
+    <td width="50%" align="center" valign="top"><strong>Your groups</strong><br><br><a href="docs/screenshots/groups.png"><img src="docs/screenshots/groups.png" alt="Your groups" width="360"></a></td>
+  </tr>
+  <tr>
+    <td width="50%" align="center" valign="top"><strong>Sign in</strong><br><br><a href="docs/screenshots/sign-in.png"><img src="docs/screenshots/sign-in.png" alt="Sign in" width="360"></a></td>
+    <td width="50%" align="center" valign="top"><strong>Create an account</strong><br><br><a href="docs/screenshots/sign-up.png"><img src="docs/screenshots/sign-up.png" alt="Create an account" width="360"></a></td>
+  </tr>
+  <tr>
+    <td width="50%" align="center" valign="top"><strong>Create a group</strong><br><br><a href="docs/screenshots/create-group.png"><img src="docs/screenshots/create-group.png" alt="Create a group" width="360"></a></td>
+    <td width="50%" align="center" valign="top"><strong>Manage members</strong><br><br><a href="docs/screenshots/members.png"><img src="docs/screenshots/members.png" alt="Manage members" width="360"></a></td>
+  </tr>
+  <tr>
+    <td width="50%" align="center" valign="top"><strong>Equal split</strong><br><br><a href="docs/screenshots/equal-split.png"><img src="docs/screenshots/equal-split.png" alt="Equal split" width="360"></a></td>
+    <td width="50%" align="center" valign="top"><strong>Custom amounts</strong><br><br><a href="docs/screenshots/custom-split.png"><img src="docs/screenshots/custom-split.png" alt="Custom amounts" width="360"></a></td>
+  </tr>
+  <tr>
+    <td width="50%" align="center" valign="top"><strong>Group balances</strong><br><br><a href="docs/screenshots/balances.png"><img src="docs/screenshots/balances.png" alt="Group balances" width="360"></a></td>
+    <td width="50%" align="center" valign="top"><strong>Expense history</strong><br><br><a href="docs/screenshots/expenses.png"><img src="docs/screenshots/expenses.png" alt="Expense history" width="360"></a></td>
+  </tr>
+  <tr>
+    <td width="50%" align="center" valign="top"><strong>Settle an expense</strong><br><br><a href="docs/screenshots/settlement.png"><img src="docs/screenshots/settlement.png" alt="Settle an expense" width="360"></a></td>
+    <td width="50%" align="center" valign="top"><strong>Group activity</strong><br><br><a href="docs/screenshots/activity.png"><img src="docs/screenshots/activity.png" alt="Group activity" width="360"></a></td>
+  </tr>
+  <tr>
+    <td width="50%" align="center" valign="top"><strong>Account settings</strong><br><br><a href="docs/screenshots/profile.png"><img src="docs/screenshots/profile.png" alt="Account settings" width="360"></a></td>
+    <td width="50%" align="center" valign="top"><strong>Mobile dashboard</strong><br><br><a href="docs/screenshots/mobile-dashboard.png"><img src="docs/screenshots/mobile-dashboard.png" alt="Mobile dashboard" height="240"></a></td>
+  </tr>
+  <tr>
+    <td width="50%" align="center" valign="top"><strong>Mobile sign in</strong><br><br><a href="docs/screenshots/mobile-sign-in.png"><img src="docs/screenshots/mobile-sign-in.png" alt="Mobile sign in" height="240"></a></td>
+    <td width="50%" align="center" valign="top"><strong>Mobile registration</strong><br><br><a href="docs/screenshots/mobile-sign-up.png"><img src="docs/screenshots/mobile-sign-up.png" alt="Mobile registration" height="240"></a></td>
+  </tr>
+</table>
 
 ## Tech stack
 
