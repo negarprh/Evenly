@@ -54,8 +54,7 @@ export const CreateGroupPage = () => {
   return (
     <div className="mx-auto max-w-3xl space-y-6">
       <Card glow className="p-6">
-        <div className="text-sm font-semibold uppercase tracking-[0.16em] text-amber-700">New shared group</div>
-        <h1 className="mt-2 display-font text-4xl font-semibold text-ink">Start a shared group</h1>
+        <h1 className="mt-2 display-font text-3xl font-semibold text-ink">Create group</h1>
       </Card>
 
       <form className="panel space-y-6 p-6" onSubmit={submit}>
@@ -82,7 +81,7 @@ export const CreateGroupPage = () => {
               setForm({ ...form, description: event.target.value });
               setErrors((current) => ({ ...current, description: undefined }));
             }}
-            placeholder="Shared rent-adjacent costs, groceries, and household basics."
+            placeholder="Groceries, bills, and household supplies"
           />
           {errors.description ? <p className="helper text-danger-700">{errors.description}</p> : null}
         </div>
@@ -92,7 +91,7 @@ export const CreateGroupPage = () => {
             Cancel
           </Button>
           <Button type="submit" disabled={submitting}>
-            {submitting ? "Creating..." : "Start group"}
+            {submitting ? "Creating..." : "Create group"}
           </Button>
         </div>
       </form>
